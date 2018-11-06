@@ -61,7 +61,8 @@ def xldate_as_datetime(xldate, datemode=0):
         )
 
 def datetime_as_xldate(pydatetime):
-    temp = dt.datetime(1899, 12, 31)
+    # https://stackoverflow.com/questions/9574793/how-to-convert-a-python-datetime-datetime-to-excel-serial-date-number
+    temp = dt.datetime(1899, 12, 30)
     delta = pydatetime - temp
     return float(delta.days) + (float(delta.seconds) / 86400)
 
